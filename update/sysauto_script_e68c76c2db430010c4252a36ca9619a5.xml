@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>Test update priority</name>
+        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2020-02-20 08:58:24</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>on_demand</run_type>
+        <script><![CDATA[try{
+
+	// Create a GlideRecord object for the NeedIt table
+var gr = new GlideRecord('x_58872_needit_needit');
+
+	gs.info(gr.canCreate());
+	gs.info(gr.canDelete());
+	gs.info(gr.canRead());
+	gs.info(gr.canWrite());
+// Query the database and return all the NeedIt records
+gr.query();
+// Iterate through the NeedIt records.  Set the Priority to Critical
+// Update the NeedIt record in the database
+
+while(gr.next()){
+	gr.priority = 3;
+	gr.update();
+}
+}catch(err){
+	gs.error(err);
+}
+
+
+]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-02-20 08:58:44</sys_created_on>
+        <sys_id>e68c76c2db430010c4252a36ca9619a5</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Test update priority</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sysauto_script_e68c76c2db430010c4252a36ca9619a5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-02-20 09:08:23</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>
